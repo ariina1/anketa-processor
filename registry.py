@@ -67,7 +67,6 @@ class Registry:
             # Нет ни одного isinstance!
             print(f"{i:<3} | {p.fio:<30} | {p.role():<15} | {p.extra():<15} | {p.masked_phone()}")    
         print("=" * 80)
-        
         print("\nОТКЛОНЕННЫЕ СТРОКИ:")
         for item in self.rejected:
             print(f"Строка {item['number']}: {item['reason']}")
