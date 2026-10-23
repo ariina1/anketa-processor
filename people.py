@@ -57,4 +57,29 @@ class Person:
         return f"{self.fio}"
 
     def __lt__(self, other):
-        return self.fio < other.fio
+        return self.fio < other.fioclass Student(Person):
+    def __init__(self, fio, mail, phone, group):
+        super().__init__(fio, mail, phone)
+        if not group.strip():
+            raise AnketaError("пустая группа")
+        self.group = group.strip()
+
+    def role(self):
+        return "студент"
+
+    def extra(self):
+        return self.group
+
+
+class Teacher(Person):
+    def __init__(self, fio, mail, phone, department):
+        super().__init__(fio, mail, phone)
+        if not department.strip():
+            raise AnketaError("пустая кафедра")
+        self.department = department.strip()
+
+    def role(self):
+        return "преподаватель"
+
+    def extra(self):
+        return self.department
