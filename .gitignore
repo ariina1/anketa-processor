@@ -1,4 +1,8 @@
 __pycache__/
 .venv/
 ok.txt
-errors.txt
+errors.txt__pycache__/
+.pytest_cache/
+before.txt
+after.txt
+after2.txt
