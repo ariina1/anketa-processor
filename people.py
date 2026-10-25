@@ -17,7 +17,10 @@ class Person:
             raise AnketaError("в ФИО меньше двух слов")
         if not all(re.fullmatch(r"[А-ЯЁа-яёA-Za-z-]+", w) for w in words):
             raise AnketaError("ФИО содержит недопустимые символы")
-        return " ".join(w.capitalize() for w in words)
+        return " ".join(
+            "-".join(part.capitalize() for part in w.split("-"))
+            for w in words
+        )
 
     @staticmethod
     def check_mail(mail):

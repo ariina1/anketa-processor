@@ -97,3 +97,7 @@ def test_razbor_stroki_prepodavatelya():
 def test_plohaya_stroka_otklonyaetsya(plohaya_stroka):
     with pytest.raises(AnketaError):
         parse_line(plohaya_stroka)
+
+
+def test_dvoynaya_familiya():
+    assert Person.check_fio("петров-водкин кузьма") == "Петров-Водкин Кузьма"
