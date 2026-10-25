@@ -17,6 +17,7 @@ class Person:
             raise AnketaError("в ФИО меньше двух слов")
         if not all(re.fullmatch(r"[А-ЯЁа-яёA-Za-z-]+", w) for w in words):
             raise AnketaError("ФИО содержит недопустимые символы")
+        # ИСПРАВЛЕНИЕ 1: обработка двойной фамилии через дефис
         return " ".join(
             "-".join(part.capitalize() for part in w.split("-"))
             for w in words
@@ -25,6 +26,7 @@ class Person:
     @staticmethod
     def check_mail(mail):
         mail = mail.strip().lower()
+        # ИСПРАВЛЕНИЕ 2: проверка на пробел внутри адреса
         if any(c.isspace() for c in mail):
             raise AnketaError(f"Почта неверная: {mail}")
         if mail.count("@") != 1:
@@ -59,6 +61,7 @@ class Person:
     def __str__(self):
         return f"{self.fio}"
 
+    # ИСПРАВЛЕНИЕ 3: сортировка с учетом буквы Ё
     def sort_key(self):
         return self.fio.lower().replace("ё", "е")
 
@@ -90,7 +93,6 @@ class Teacher(Person):
 
     def extra(self):
         return self.department
-
 
 def parse_line(line):
     """Разбирает строку файла анкет и возвращает Student или Teacher."""
