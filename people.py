@@ -82,3 +82,19 @@ class Teacher(Person):
 
     def extra(self):
         return self.department
+
+
+def parse_line(line):
+    """Разбирает строку файла анкет и возвращает Student или Teacher."""
+    line = line.strip()
+    if not line:
+        raise AnketaError("пустая строка")
+    fields = [f.strip() for f in line.split(";")]
+    if len(fields) != 5:
+        raise AnketaError(f"полей должно быть 5, найдено {len(fields)}")
+    ank_type, fio, mail, phone, extra = fields
+    if ank_type == "s":
+        return Student(fio, mail, phone, extra)
+    if ank_type == "t":
+        return Teacher(fio, mail, phone, extra)
+    raise AnketaError(f"неизвестный тип: {ank_type}")
