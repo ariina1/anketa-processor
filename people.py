@@ -59,8 +59,11 @@ class Person:
     def __str__(self):
         return f"{self.fio}"
 
+    def sort_key(self):
+        return self.fio.lower().replace("ё", "е")
+
     def __lt__(self, other):
-        return self.fio < other.fio
+        return self.sort_key() < other.sort_key()
 
 class Student(Person):
     def __init__(self, fio, mail, phone, group):

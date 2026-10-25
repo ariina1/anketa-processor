@@ -83,3 +83,12 @@ def test_save_errors_pishet_prichinu(zhurnal, tmp_path):
     assert len(stroki) == 3
     assert stroki[0].startswith("Строка 2:")
     assert "меньше двух слов" in stroki[0]
+
+
+def test_sortirovka_s_bukvoy_yo():
+    reg = Registry()
+    reg.add(Student("Яковлев Яков", "a@mail.ru", "89123456781", "09с41"))
+    reg.add(Student("Ёлкин Егор", "b@mail.ru", "89123456782", "09с41"))
+    reg.add(Student("Абрамов Артём", "c@mail.ru", "89123456783", "09с41"))
+    reg.sort()
+    assert [p.fio.split()[0] for p in reg] == ["Абрамов", "Ёлкин", "Яковлев"]
