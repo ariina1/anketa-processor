@@ -25,6 +25,8 @@ class Person:
     @staticmethod
     def check_mail(mail):
         mail = mail.strip().lower()
+        if any(c.isspace() for c in mail):
+            raise AnketaError(f"Почта неверная: {mail}")
         if mail.count("@") != 1:
             raise AnketaError(f"Почта неверная: {mail}")
         local, domain = mail.split("@")

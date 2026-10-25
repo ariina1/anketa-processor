@@ -101,3 +101,8 @@ def test_plohaya_stroka_otklonyaetsya(plohaya_stroka):
 
 def test_dvoynaya_familiya():
     assert Person.check_fio("петров-водкин кузьма") == "Петров-Водкин Кузьма"
+
+
+def test_probel_vnutri_adresa():
+    with pytest.raises(AnketaError):
+        Person.check_mail("iv anov@mail.ru")
