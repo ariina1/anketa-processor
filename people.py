@@ -1,10 +1,8 @@
 import re
 
-
 class AnketaError(Exception):
     """Своё исключение для ошибок в анкете."""
     pass
-
 
 class Person:
     def __init__(self, fio, mail, phone):
@@ -57,7 +55,9 @@ class Person:
         return f"{self.fio}"
 
     def __lt__(self, other):
-        return self.fio < other.fioclass Student(Person):
+        return self.fio < other.fio
+
+class Student(Person):
     def __init__(self, fio, mail, phone, group):
         super().__init__(fio, mail, phone)
         if not group.strip():
@@ -69,7 +69,6 @@ class Person:
 
     def extra(self):
         return self.group
-
 
 class Teacher(Person):
     def __init__(self, fio, mail, phone, department):

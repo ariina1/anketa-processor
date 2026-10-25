@@ -33,7 +33,6 @@ class Registry:
                 continue
 
             ank_type, fio, mail, phone, extra = fields
-
             try:
                 if ank_type == 's':
                     person = Student(fio, mail, phone, extra)
@@ -64,24 +63,22 @@ class Registry:
         print("-" * 80)
         
         for i, p in enumerate(self.accepted, 1):
-            # Нет ни одного isinstance!
-            print(f"{i:<3} | {p.fio:<30} | {p.role():<15} | {p.extra():<15} | {p.masked_phone()}")    
+            print(f"{i:<3} | {p.fio:<30} | {p.role():<15} | {p.extra():<15} | {p.masked_phone()}")
         print("=" * 80)
+        
         print("\nОТКЛОНЕННЫЕ СТРОКИ:")
         for item in self.rejected:
             print(f"Строка {item['number']}: {item['reason']}")
-        print(f"\nПринято: {len(self.accepted)} | Отклонено: {len(self.rejected)}")     
+        print(f"\nПринято: {len(self.accepted)} | Отклонено: {len(self.rejected)}")
         roles = {}
         groups = {}
         for p in self.accepted:
             roles[p.role()] = roles.get(p.role(), 0) + 1
             if p.role() == "студент":
                 groups[p.extra()] = groups.get(p.extra(), 0) + 1
-
         print("\nПо ролям:")
         for r, count in roles.items():
             print(f"  {r}: {count}")
-
         print("\nПо группам:")
         for g, count in groups.items():
             print(f"  {g}: {count}")
