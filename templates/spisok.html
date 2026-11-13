@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список фамилий</title>
+</head>
+<body>
+    <h1>Список фамилий</h1>
+    {% if spisok %}
+        <ul>
+            {% for f in spisok %}
+                <li>{{ f }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Список пуст</p>
+    {% endif %}
+</body>
+</html>

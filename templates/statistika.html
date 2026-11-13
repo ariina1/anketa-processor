@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Статистика{% endblock %}
+{% block content %}
+<div class="card">
+    <h2>Общая статистика</h2>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <h3>Принято</h3>
+            <p>{{ prinyato }}</p>
+        </div>
+        <div class="stat-box">
+            <h3>Отклонено</h3>
+            <p style="color: #c62828;">{{ otkloneno }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Сводка по ролям и группам</h2>
+    <h3 style="margin: 15px 0 10px;">По ролям:</h3>
+    <ul style="margin-left: 20px;">
+        {% for rol, count in roles.items() %}
+            <li>{{ rol }}: <strong>{{ count }}</strong></li>
+        {% endfor %}
+    </ul>
+    
+    <h3 style="margin: 20px 0 10px;">По группам:</h3>
+    <ul style="margin-left: 20px;">
+        {% for gruppa, count in gruppy.items() %}
+            <li>{{ gruppa }}: <strong>{{ count }}</strong></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% if brak %}
+<div class="card">
+    <h2>Отклонённые строки</h2>
+    <table>
+        <thead>
+            <tr><th>Строка в файле</th><th>Причина отклонения</th></tr>
+        </thead>
+        <tbody>
+            {% for b in brak %}
+            <tr>
+                <td>{{ b.number }}</td>
+                <td style="color: #c62828;">{{ b.reason }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

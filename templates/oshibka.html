@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Ошибка{% endblock %}
+{% block content %}
+<div class="card" style="text-align: center; padding: 50px;">
+    <h2 style="border: none; font-size: 4rem; color: #c62828;">404</h2>
+    <h3 style="margin-bottom: 20px;">Страница не найдена</h3>
+    <p style="color: #666; margin-bottom: 30px;">{{ message }}</p>
+    <a href="{{ url_for('index') }}" style="padding: 10px 20px; background: #2a5298; color: white; border-radius: 5px; text-decoration: none;">Вернуться на главную</a>
+</div>
+{% endblock %}

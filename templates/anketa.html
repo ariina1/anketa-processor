@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Анкета №{{ nomer }}{% endblock %}
+{% block content %}
+<div class="card">
+    <h2>Анкета №{{ nomer }}</h2>
+    <table>
+        <tr><th style="width: 30%;">ФИО</th><td>{{ p.fio }}</td></tr>
+        <tr><th>Роль</th><td>{{ p.role() }}</td></tr>
+        <tr><th>Электронная почта</th><td>{{ p.mail }}</td></tr>
+        <tr><th>Телефон</th><td>{{ p.masked_phone() }}</td></tr>
+        <tr><th>Группа/Кафедра</th><td>{{ p.extra() }}</td></tr>
+    </table>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('index') }}">← Вернуться к списку</a>
+    </div>
+</div>
+{% endblock %}

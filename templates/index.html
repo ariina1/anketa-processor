@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<div class="card">
+    <h2>Список анкет</h2>
+    <p style="margin-bottom: 20px; font-size: 1.1rem;">
+        <strong>Принято:</strong> {{ prinyato }} &nbsp;|&nbsp; <strong>Отклонено:</strong> {{ otkloneno }}
+    </p>
+    
+    {% if anketi %}
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>ФИО</th>
+                    <th>Роль</th>
+                    <th>Группа/Кафедра</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in anketi %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td><a href="{{ url_for('anketa_stranica', nomer=loop.index) }}">{{ a.fio }}</a></td>
+                    <td>
+                        {% if a.role() == 'студент' %}
+                            <span class="badge badge-student">Студент</span>
+                        {% else %}
+                            <span class="badge badge-teacher">Преподаватель</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ a.extra() }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="empty-state">
+            <h3>Список пуст</h3>
+            <p>Пока нет ни одной принятой анкеты.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

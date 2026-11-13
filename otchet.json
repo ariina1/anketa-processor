@@ -1,0 +1,23 @@
+{
+  "istochnik": "Сервер",
+  "prinyato": 4,
+  "otkloneno": 2,
+  "spisok_prinyatyh": [
+    "Иванов Иван Петрович",
+    "Морозова Екатерина Игоревна",
+    "Петров Пётр Сергеевич",
+    "Сидорова Анна Олеговна"
+  ],
+  "spisok_otklonennyh": [
+    {
+      "number": 4,
+      "line": "{'fio': 'Кузнецов Павел Егорович', 'gruppa': '09с34', 'mail': 'kuznetsov.mail.ru', 'nomer': 4, 'phone': '79211234567', 'tip': 's'}",
+      "reason": "Почта неверная: kuznetsov.mail.ru"
+    },
+    {
+      "number": 5,
+      "line": "{'fio': 'Смирнова Ольга', 'kafedra': 'И4', 'mail': 'smirnova@inbox.ru', 'nomer': 5, 'phone': '7921123', 'tip': 't'}",
+      "reason": "Телефон неверный: 7921123"
+    }
+  ]
+}
